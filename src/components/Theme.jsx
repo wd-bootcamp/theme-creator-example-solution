@@ -1,10 +1,10 @@
 import ColorCard from "./ColorCard";
-import { ChevronDown, ChevronUp, Edit, Trash } from "lucide-react";
+import { ChevronDown, ChevronUp, Edit, Eye, Trash } from "lucide-react";
 import "./Theme.css";
 import { useState } from "react";
 import ThemeForm from "./ThemeForm";
 
-export default function Theme({ theme, onDelete, onEdit }) {
+export default function Theme({ theme, onDelete, onEdit, onSelectTheme }) {
   const [displayState, setDisplayState] = useState("preview");
 
   function toggleDetailView() {
@@ -34,7 +34,12 @@ export default function Theme({ theme, onDelete, onEdit }) {
       {displayState === "preview" && <ThemePreview theme={theme} />}
 
       {displayState === "details" && (
-        <ThemeDetails theme={theme} onDelete={onDelete} onEdit={showEditForm} />
+        <ThemeDetails
+          theme={theme}
+          onDelete={onDelete}
+          onEdit={showEditForm}
+          onSelectTheme={onSelectTheme}
+        />
       )}
 
       {displayState === "edit" && (
@@ -58,10 +63,14 @@ function ThemePreview({ theme }) {
   );
 }
 
-function ThemeDetails({ theme, onDelete, onEdit }) {
+function ThemeDetails({ theme, onDelete, onEdit, onSelectTheme }) {
   return (
     <>
       <div className="theme__actions">
+        <button className="theme__button" onClick={onSelectTheme}>
+          <Eye size="1rem" />
+          Test
+        </button>
         <button className="theme__button" onClick={onEdit}>
           <Edit size="1rem" />
           Edit
