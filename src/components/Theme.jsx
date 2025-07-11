@@ -25,7 +25,7 @@ export default function Theme({ theme, onDelete }) {
           </div>
           <ul>
             {theme.colors.map((color) => (
-              <li key={color.id}>
+              <li key={color.role}>
                 <ColorCard color={color} />
               </li>
             ))}
@@ -36,7 +36,7 @@ export default function Theme({ theme, onDelete }) {
           {theme.colors.map((color) => (
             <li
               className="theme__color-preview-item"
-              key={color.id}
+              key={color.role}
               style={{ "--bg-color": color.value }}
             ></li>
           ))}

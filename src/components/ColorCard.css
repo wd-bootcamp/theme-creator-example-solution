@@ -19,6 +19,13 @@
   color: #888;
 }
 
+.colorcard__name {
+  margin-top: auto;
+  color: #666;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-weight: bold;
+}
+
 .colorcard__display {
   --display-color: #efefef;
   height: 150px;

@@ -4,9 +4,12 @@ import ColorCard from "./components/ColorCard";
 import Theme from "./components/Theme";
 import ThemeForm from "./components/ThemeForm";
 import { themes as initialThemes } from "./db";
+import useLocalStorageState from "use-local-storage-state";
 
 function App() {
-  const [themes, setThemes] = useState(initialThemes);
+  const [themes, setThemes] = useLocalStorageState("themes", {
+    defaultValue: initialThemes,
+  });
 
   function handleAddTheme(data) {
     const newTheme = {
