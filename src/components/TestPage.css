@@ -39,19 +39,22 @@
   padding: 8px;
   background-color: #ccc;
   border: 3px currentColor solid;
+  color: inherit;
 }
 
 .testpage__button--primary {
   background-color: var(--primary);
+  color: color-mix(in srgb, var(--primary) 20%, var(--surface-on) 80%);
   border-color: var(--primary);
 }
 
 .testpage__button--secondary {
   background-color: var(--secondary);
+  color: color-mix(in srgb, var(--secondary) 20%, var(--surface-on) 80%);
   border-color: var(--secondary);
 }
 
 .testpage__button--outlined {
   background-color: transparent;
-  border-color: var(--surface-on);
+  font-weight: bold;
 }
