@@ -1,0 +1,30 @@
+.theme__title {
+  margin: 0;
+}
+
+.theme__titlebar {
+  background-color: #ddd;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-inline: 1rem;
+  padding-block: 8px;
+  cursor: pointer;
+}
+
+.theme__titlebar:hover {
+  background-color: #eee;
+}
+
+.theme__color-preview-list {
+  display: flex;
+  height: 20px;
+}
+
+.theme__color-preview-item {
+  --bg-color: grey;
+  flex-grow: 1;
+  background-color: var(--bg-color);
+}
