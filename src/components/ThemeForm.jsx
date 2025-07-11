@@ -1,6 +1,18 @@
 import { useState } from "react";
 import "./ThemeForm.css";
 
+async function fetchColorName(value) {
+  const hexValue = value.replace("#", "");
+
+  const response = await fetch(
+    `https://www.thecolorapi.com/id?hex=${hexValue}`
+  );
+
+  const data = await response.json();
+
+  return data.name.value;
+}
+
 const INITIAL_THEME = {
   name: "",
   colors: [
@@ -16,7 +28,7 @@ export default function ThemeForm({
   onSubmit,
   editMode,
 }) {
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
 
     const data = Object.fromEntries(new FormData(event.target));
@@ -27,18 +39,22 @@ export default function ThemeForm({
         {
           role: "primary",
           value: data.primary,
+          name: await fetchColorName(data.primary),
         },
         {
           role: "secondary",
           value: data.secondary,
+          name: await fetchColorName(data.secondary),
         },
         {
           role: "surface",
           value: data.surface,
+          name: await fetchColorName(data.surface),
         },
         {
           role: "surface-on",
           value: data["surface-on"],
+          name: await fetchColorName(data["surface-on"]),
         },
       ],
     };
