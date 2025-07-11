@@ -1,0 +1,26 @@
+.colorcard {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  border-bottom: #bbb solid 1px;
+}
+
+.colorcard__info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 1rem;
+  background-color: lightgray;
+}
+.colorcard__role {
+  font-weight: bold;
+  color: #333;
+}
+.colorcard__value {
+  color: #888;
+}
+
+.colorcard__display {
+  --display-color: #efefef;
+  height: 150px;
+  background-color: var(--display-color);
+}
