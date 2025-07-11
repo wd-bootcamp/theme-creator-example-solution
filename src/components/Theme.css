@@ -28,3 +28,27 @@
   flex-grow: 1;
   background-color: var(--bg-color);
 }
+
+.theme__actions {
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+}
+
+.theme__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  gap: 2rem;
+  padding: 8px 24px;
+  border-radius: 8px;
+  border: none;
+  background-color: rgb(248, 75, 75);
+  color: white;
+  cursor: pointer;
+}
+
+.theme__button:active {
+  filter: brightness(0.9);
+}

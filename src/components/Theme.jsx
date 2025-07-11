@@ -1,9 +1,9 @@
 import ColorCard from "./ColorCard";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp, Trash } from "lucide-react";
 import "./Theme.css";
 import { useState } from "react";
 
-export default function Theme({ theme }) {
+export default function Theme({ theme, onDelete }) {
   const [expanded, setExpanded] = useState(false);
   return (
     <article className="theme">
@@ -16,13 +16,21 @@ export default function Theme({ theme }) {
       </button>
 
       {expanded ? (
-        <ul>
-          {theme.colors.map((color) => (
-            <li key={color.id}>
-              <ColorCard color={color} />
-            </li>
-          ))}
-        </ul>
+        <>
+          <div className="theme__actions">
+            <button className="theme__button" onClick={onDelete}>
+              <Trash />
+              Delete Theme
+            </button>
+          </div>
+          <ul>
+            {theme.colors.map((color) => (
+              <li key={color.id}>
+                <ColorCard color={color} />
+              </li>
+            ))}
+          </ul>
+        </>
       ) : (
         <ul className="theme__color-preview-list">
           {theme.colors.map((color) => (
