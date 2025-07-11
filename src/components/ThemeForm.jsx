@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./ThemeForm.css";
 
 const INITIAL_THEME = {
@@ -37,7 +38,7 @@ export default function ThemeForm({
         },
         {
           role: "surface-on",
-          value: data.surfaceOn,
+          value: data["surface-on"],
         },
       ],
     };
@@ -52,44 +53,45 @@ export default function ThemeForm({
       <input
         type="text"
         name="name"
-        placeholder="name"
-        aria-label="theme name"
         defaultValue={initialValues.name}
+        placeholder="name"
         required
       />
-      <div className="themeform__color-inputs">
-        <input
-          className="themeform__color-input"
-          type="color"
-          aria-label="primary"
-          name="primary"
-          defaultValue={initialValues.colors[0].value}
-        />
-        <input
-          className="themeform__color-input"
-          type="color"
-          aria-label="secondary"
-          name="secondary"
-          defaultValue={initialValues.colors[1].value}
-        />
-        <input
-          className="themeform__color-input"
-          type="color"
-          aria-label="surface"
-          name="surface"
-          defaultValue={initialValues.colors[2].value}
-        />
-        <input
-          className="themeform__color-input"
-          type="color"
-          aria-label="surface-on"
-          name="surfaceOn"
-          defaultValue={initialValues.colors[3].value}
-        />
-      </div>
+      <ul className="themeform__color-inputs">
+        {initialValues.colors.map((color) => (
+          <li key={color.role} className="themeform__color-input">
+            <ColorInput defaultValue={color.value} name={color.role} />
+          </li>
+        ))}
+      </ul>
       <button className="themeform__button">
         {editMode ? "Update" : "Create Theme"}
       </button>
     </form>
+  );
+}
+
+function ColorInput({ defaultValue, name }) {
+  const [value, setValue] = useState(defaultValue);
+
+  return (
+    <div className="colorinput">
+      <input
+        className="colorinput__color"
+        type="color"
+        name={name}
+        value={value}
+        onChange={(event) => setValue(event.target.value)}
+      />
+      <label className="colorinput__wrapper">
+        <span className="colorinput__label">{name}</span>
+        <input
+          className="colorinput__text"
+          type="text"
+          value={value}
+          onChange={(event) => setValue(event.target.value)}
+        />
+      </label>
+    </div>
   );
 }
