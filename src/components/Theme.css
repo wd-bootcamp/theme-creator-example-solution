@@ -1,9 +1,12 @@
+.theme {
+  background-color: #ddd;
+}
+
 .theme__title {
   margin: 0;
 }
 
 .theme__titlebar {
-  background-color: #ddd;
   border: none;
   display: flex;
   align-items: center;
@@ -12,6 +15,7 @@
   padding-inline: 1rem;
   padding-block: 8px;
   cursor: pointer;
+  background-color: transparent;
 }
 
 .theme__titlebar:hover {
@@ -33,6 +37,7 @@
   padding: 8px;
   display: flex;
   justify-content: center;
+  gap: 8px;
 }
 
 .theme__button {
@@ -40,15 +45,19 @@
   justify-content: center;
   align-items: center;
   font-size: 1rem;
-  gap: 2rem;
+  gap: 1rem;
   padding: 8px 24px;
   border-radius: 8px;
   border: none;
-  background-color: rgb(248, 75, 75);
+  background-color: gray;
   color: white;
   cursor: pointer;
 }
 
 .theme__button:active {
   filter: brightness(0.9);
+}
+
+.theme__button--danger {
+  background-color: rgb(248, 75, 75);
 }

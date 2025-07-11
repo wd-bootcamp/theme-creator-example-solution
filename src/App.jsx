@@ -1,6 +1,4 @@
-import { useState } from "react";
 import "./App.css";
-import ColorCard from "./components/ColorCard";
 import Theme from "./components/Theme";
 import ThemeForm from "./components/ThemeForm";
 import { themes as initialThemes } from "./db";
@@ -14,28 +12,18 @@ function App() {
   function handleAddTheme(data) {
     const newTheme = {
       id: crypto.randomUUID(),
-      name: data.name,
-      colors: [
-        {
-          role: "primary",
-          value: data.primary,
-        },
-        {
-          role: "secondary",
-          value: data.secondary,
-        },
-        {
-          role: "surface",
-          value: data.surface,
-        },
-        {
-          role: "surface-on",
-          value: data.surfaceOn,
-        },
-      ],
+      ...data,
     };
 
     setThemes([newTheme, ...themes]);
+  }
+
+  function handleUpdateTheme(updatedTheme) {
+    const updatedThemes = themes.map((theme) => {
+      return theme.id === updatedTheme.id ? updatedTheme : theme;
+    });
+
+    setThemes(updatedThemes);
   }
 
   function handleDeleteTheme(id) {
@@ -56,6 +44,7 @@ function App() {
               <Theme
                 theme={theme}
                 onDelete={() => handleDeleteTheme(theme.id)}
+                onEdit={handleUpdateTheme}
               />
             </li>
           ))}
